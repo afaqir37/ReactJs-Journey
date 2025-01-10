@@ -33,11 +33,9 @@ You are tasked with implementing a basic version of the `useSWR` hook, a React h
 
 ### 📚 Example Usage:
 
-jsx
+```javascript
 
-Copy code
-
-`const fetcher = async () => {
+const fetcher = async () => {
    const response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
    return response.json();
 };
@@ -52,7 +50,8 @@ const MyComponent = () => {
          {data && <p>Data: {JSON.stringify(data)}</p>}
       </div>
    );
-};`
+};
+```
 
 ### ⚡ Additional Requirements:
 
