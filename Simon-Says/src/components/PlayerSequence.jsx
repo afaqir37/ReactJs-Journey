@@ -1,11 +1,14 @@
 import { useState } from 'react'
 
-export default function PlayerSequence({ length }) {
+export default function PlayerSequence({ playerSequence, setPlayerSequence, isVisible }) {
 
-    const [playerSequence, setPlayerSequence] = useState(Array(length).fill(null))
+    
 
     const handleDrop = (e, index) => {
       e.preventDefault()
+
+      if (isVisible)
+        return 
       const color = e.dataTransfer.getData('color')
       const newPlayerSequence = [...playerSequence]
       newPlayerSequence[index] = color

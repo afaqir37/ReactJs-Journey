@@ -11,6 +11,7 @@ export default function SimonSays() {
 
 
   const [sequence, setSequence] = useState(generateRandomSequence())
+  const [playerSequence, setPlayerSequence] = useState(Array(sequence.length).fill(null))
   const [isPlaying, setIsPlaying] = useState(false)
   const [countdown, setCountdown] = useState(4)
   const [isVisible, setIsVisible] = useState(false)
@@ -56,6 +57,7 @@ export default function SimonSays() {
 
   const startGame = () => {
     setSequence(generateRandomSequence())
+    setPlayerSequence(Array(sequence.length).fill(null))
     setIsPlaying(prev => !prev)
     setCountdown(4)
     setIsVisible(false)
@@ -99,8 +101,15 @@ export default function SimonSays() {
             curtainVisible={curtainVisible}
           />
           
-          <PlayerSequence length={sequence.length} />
-          <ColorPicker handleColor={handleColor} />
+          <PlayerSequence 
+            playerSequence={playerSequence}
+            setPlayerSequence={setPlayerSequence}
+            isVisible={isVisible}
+          />
+          <ColorPicker
+            handleColor={handleColor} 
+            isVisible={isVisible}
+          />
 
         
       </div>

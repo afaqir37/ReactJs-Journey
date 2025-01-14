@@ -10,10 +10,10 @@ const colors = [
     '#34495E', // Dark Blue
 ]
 
-export default function ColorPicker({ handleColor }) {
-    console.log('pick')
+export default function ColorPicker({ handleColor, isVisible}) {
 
     const handleDragStart = (e, color) => {
+        
         e.dataTransfer.setData('color', color)
     }
 
@@ -23,9 +23,9 @@ export default function ColorPicker({ handleColor }) {
                 colors.map(color => {
                     return <button
                         key={color}
-                        className='w-16 h-16 border-2 border-black rounded-full 
+                        className={`w-16 h-16 border-2 border-black rounded-full 
                                     shadow-lg transition-transform duration-200 
-                                    ease-in-out  transform hover:scale-110 hover:shadow-xl'
+                                    ease-in-out  transform hover:scale-110 hover:shadow-xl ${isVisible ? 'opacity-50 cursor-not-allowed' : ''}`}
                         style={{backgroundColor: `${color}`}}
                         onClick={handleColor}
                         draggable
