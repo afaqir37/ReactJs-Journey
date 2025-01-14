@@ -2,15 +2,15 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { useWindowSize } from 'react-use'
-import GeneratedSequence from './components/GeneratedSequence'
-import PlayerSequence from './components/PlayerSequence'
-import ColorPicker from './components/ColorPicker'
-import Alert from './components/Alert'
-import { generateRandomSequence } from './utils/randomSequence'
-import { handleColor } from './utils/handleColor'
+import GeneratedSequence from './GeneratedSequence'
+import PlayerSequence from './PlayerSequence'
+import ColorPicker from './ColorPicker'
+import Alert from './Alert'
+import { generateRandomSequence } from '../utils/randomSequence'
+import { handleColor } from '../utils/handleColor'
 import Confetti from 'react-confetti'
-import WinAlert from './components/WinAlert'
-import LossAlert from './components/LossAlert'
+import WinAlert from './WinAlert'
+import LossAlert from './LossAlert'
 
 
 export default function SimonSays() {

@@ -1,6 +1,6 @@
 
 import ReactDOM from 'react-dom/client'
-import SimonSays from './SimonSays'
+import SimonSays from './components/SimonSays'
 import './index.css'
 
 
