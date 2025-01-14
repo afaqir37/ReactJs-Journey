@@ -1,5 +1,5 @@
 
-# Simon Says Game (React Version)
+# Simon Says Game (React Version + TailwindCSS)
 This is a version of the classic Simon Says game, built with React. Players must memorize and repeat a sequence of actions before the game ends. This version uses a sequence of events, and the player needs to replicate them to win the game.
 
 ### Features
