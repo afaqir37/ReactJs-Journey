@@ -1,3 +1,4 @@
+import { generateRandomSequence } from "../utils/randomSequence"
 
 const colors = [
     '#d00000', // Red
@@ -16,11 +17,11 @@ export default function ColorPicker({ handleColor, isVisible, isGameOver}) {
         
         e.dataTransfer.setData('color', color)
     }
-
+    const colorSequence = generateRandomSequence()
     return (
         <div className='flex flex-wrap justify-center gap-20 mt-[100px]'>
             {
-                colors.map(color => {
+                colorSequence.map(color => {
                     return <button
                         key={color}
                         className={`w-16 h-16 border-2 border-black rounded-full 

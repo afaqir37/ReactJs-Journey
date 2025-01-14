@@ -20,6 +20,6 @@ export const generateRandomSequence = () => {
 
   }
 
-  return sequence.slice(4)
+  return sequence
 }
 

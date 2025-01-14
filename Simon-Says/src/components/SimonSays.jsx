@@ -16,7 +16,7 @@ import LossAlert from './LossAlert'
 export default function SimonSays() {
 
 
-  const [sequence, setSequence] = useState(generateRandomSequence())
+  const [sequence, setSequence] = useState(generateRandomSequence().slice(4))
   const [playerSequence, setPlayerSequence] = useState(Array(sequence.length).fill(null))
   const [isPlaying, setIsPlaying] = useState(false)
   const [countdown, setCountdown] = useState(4)
@@ -74,7 +74,7 @@ export default function SimonSays() {
   }, [isGameOver])
 
   const startGame = () => {
-    setSequence(generateRandomSequence())
+    setSequence(generateRandomSequence().slice(4))
     setPlayerSequence(Array(sequence.length).fill(null))
     setIsPlaying(prev => !prev)
     setCountdown(4)
