@@ -12,6 +12,7 @@ export default function SimonSays() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [countdown, setCountdown] = useState(4)
   const [isVisible, setIsVisible] = useState(false)
+  const [curtainVisible, setCurtainVisible] = useState(false)
   
 
   useEffect(() => {
@@ -37,7 +38,10 @@ export default function SimonSays() {
       
       let timeId
       if (countdown === 0)
-        timeId = setTimeout(() => setIsVisible(false), 1000)
+        timeId = setTimeout(() => {
+          setIsVisible(false)
+          setCurtainVisible(true)
+        }, 1000)
 
 
       return () => {
@@ -53,6 +57,7 @@ export default function SimonSays() {
     setIsPlaying(prev => !prev)
     setCountdown(4)
     setIsVisible(false)
+    setCurtainVisible(false)
   }
 
 
@@ -70,7 +75,10 @@ export default function SimonSays() {
       </div>
 
 
+
+
       <div className='h-32'>
+    
 
         
           <div className={`font-sans text-xl font-bold  transition-opacity duration-500 ease-in-out delay-200 ${isVisible ? 'opacity-100 visible' : 'opacity-0 invisible'} `}>
@@ -83,7 +91,12 @@ export default function SimonSays() {
 
       <div className='flex flex-col items-center'>
 
-          <GeneratedSequence sequence={sequence} />
+
+          <GeneratedSequence 
+            sequence={sequence} 
+            curtainVisible={curtainVisible}
+          />
+          
           <PlayerSequence sequence={sequence} />
 
         
