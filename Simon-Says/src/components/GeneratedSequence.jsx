@@ -30,7 +30,8 @@ export default function GeneratedSequence({ sequence, curtainVisible}) {
             {sequence.map((color, index) => (
                 <div 
                 key={index} 
-                className={`w-32 h-32 ${color} border-4 border-black rounded-lg`}
+                className={`w-32 h-32 rounded-lg shawow-2xl `} 
+                style={{ backgroundColor: color, borderColor: color }}
             ></div>
             ))}
 

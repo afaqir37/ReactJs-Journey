@@ -1,9 +1,13 @@
 const colors = [
-    {name: 'red', colorBg: 'bg-red-500', colorBgActive: 'bg-red-300'},
-    {name: 'green', colorBg: 'bg-green-500', colorBgActive: 'bg-green-300'},
-    {name: 'blue', colorBg: 'bg-blue-500', colorBgActive: 'bg-blue-300'},
-    {name: 'yellow', colorBg: 'bg-yellow-500', colorBgActive: 'bg-yellow-300'}
-  ]
+  '#FF5733', // Red
+  '#33FF57', // Green
+  '#3357FF', // Blue
+  '#F1C40F', // Yellow
+  '#9B59B6', // Purple
+  '#E67E22', // Orange
+  '#1ABC9C', // Teal
+  '#34495E', // Dark Blue
+]
 
 // Fisher-Yates shuffle algorithm implemented below to generate unique colors
 
@@ -16,6 +20,6 @@ export const generateRandomSequence = () => {
 
   }
 
-  return sequence.map(obj => obj.colorBg)
+  return sequence.slice(4)
 }
 

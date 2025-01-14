@@ -2,7 +2,9 @@
 import { useState, useEffect } from 'react'
 import GeneratedSequence from './components/GeneratedSequence'
 import PlayerSequence from './components/PlayerSequence'
+import ColorPicker from './components/ColorPicker'
 import { generateRandomSequence } from './utils/randomSequence'
+import { handleColor } from './utils/handleColor'
 
 
 export default function SimonSays() {
@@ -63,7 +65,7 @@ export default function SimonSays() {
 
   return (
     <main className='flex flex-col items-center justify-start h-screen p-9 bg-[#E7FBE6]'>
-      <h1 className='font-sans text-5xl mb-[300px] font-semibold'>Simon Says:</h1>
+      <h1 className='font-sans text-5xl mb-4 font-semibold'>Simon Says:</h1>
 
       <div className='mb-9'>
         <button
@@ -97,7 +99,8 @@ export default function SimonSays() {
             curtainVisible={curtainVisible}
           />
           
-          <PlayerSequence sequence={sequence} />
+          <PlayerSequence length={sequence.length} />
+          <ColorPicker handleColor={handleColor} />
 
         
       </div>
