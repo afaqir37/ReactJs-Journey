@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import GeneratedSequence from './components/GeneratedSequence'
 import PlayerSequence from './components/PlayerSequence'
 import ColorPicker from './components/ColorPicker'
+import Alert from './components/Alert'
 import { generateRandomSequence } from './utils/randomSequence'
 import { handleColor } from './utils/handleColor'
 
@@ -16,6 +17,7 @@ export default function SimonSays() {
   const [countdown, setCountdown] = useState(4)
   const [isVisible, setIsVisible] = useState(false)
   const [curtainVisible, setCurtainVisible] = useState(false)
+  const [isAlertVisible, setIsAlertVisible] = useState(false)
   
 
   useEffect(() => {
@@ -95,11 +97,19 @@ export default function SimonSays() {
 
       <div className='flex flex-col items-center'>
 
+          <div className='h-32'>
+            <div className={`transition-opacity duration-500 ease-in-out  ${isAlertVisible ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
+              <Alert />
+            </div>
+          </div>
 
           <GeneratedSequence 
             sequence={sequence} 
+            playerSequence={playerSequence}
             curtainVisible={curtainVisible}
             setCurtainVisible={setCurtainVisible}
+            setIsAlertVisible={setIsAlertVisible}
+            
           />
           
           <PlayerSequence 

@@ -1,7 +1,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 
-export default function GeneratedSequence({ sequence, curtainVisible, setCurtainVisible}) {
+export default function GeneratedSequence({ sequence, playerSequence, curtainVisible, setCurtainVisible, setIsAlertVisible}) {
 
     const sequenceRef = useRef(null)
     const [sequenceStyle, setSequenceStyle] = useState({
@@ -9,9 +9,23 @@ export default function GeneratedSequence({ sequence, curtainVisible, setCurtain
         width: 0,
         height: 0
     })
+    const [isButtonDisabled, setIsButtonDisabled] = useState(false)
 
     const revealSequence = () => {
-        setCurtainVisible(false)
+        if (isButtonDisabled) return
+        console.log('clicked')
+
+        if (playerSequence.every(color => color !== null))
+            setCurtainVisible(false)
+        else {
+            setIsAlertVisible(true)
+            setIsButtonDisabled(true)
+
+            setTimeout(() => {
+                setIsAlertVisible(false)
+                setIsButtonDisabled(false)
+            }, 3000)
+        }
     }
 
     useEffect(() => {
