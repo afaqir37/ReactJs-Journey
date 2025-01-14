@@ -99,6 +99,7 @@ export default function SimonSays() {
           <GeneratedSequence 
             sequence={sequence} 
             curtainVisible={curtainVisible}
+            setCurtainVisible={setCurtainVisible}
           />
           
           <PlayerSequence 

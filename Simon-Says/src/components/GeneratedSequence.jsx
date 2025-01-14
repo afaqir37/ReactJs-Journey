@@ -1,7 +1,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 
-export default function GeneratedSequence({ sequence, curtainVisible}) {
+export default function GeneratedSequence({ sequence, curtainVisible, setCurtainVisible}) {
 
     const sequenceRef = useRef(null)
     const [sequenceStyle, setSequenceStyle] = useState({
@@ -9,6 +9,10 @@ export default function GeneratedSequence({ sequence, curtainVisible}) {
         width: 0,
         height: 0
     })
+
+    const revealSequence = () => {
+        setCurtainVisible(false)
+    }
 
     useEffect(() => {
         if (sequenceRef.current) {
@@ -36,14 +40,21 @@ export default function GeneratedSequence({ sequence, curtainVisible}) {
             ))}
 
             <div  
-                className={`absolute bg-gray-400 transition-transform duration-1000 ease-in-out rounded `}
+                className={`flex items-center justify-center text-4xl font-serif 
+                            select-none cursor-pointer absolute 
+                            bg-gray-400 transition-transform duration-1000 
+                            ease-in-out rounded 
+                            hover:bg-gray-500 hover:scale-105 hover:shadow-lg `}
                 style={{
                     top: `${sequenceStyle.top}px`,
                     width: `${sequenceStyle.width}px`,
                     height: `${sequenceStyle.height}px`,
                     transform: curtainVisible ? 'translateX(0)' : 'translateX(-100vw)'
                 }}
-            />
+                onClick={revealSequence}
+            >
+                {curtainVisible ? 'Reveal' : ''}
+            </div>
 
         </div>
     )
