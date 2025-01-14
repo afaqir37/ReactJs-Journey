@@ -25,6 +25,7 @@ export default function SimonSays() {
   const [isAlertVisible, setIsAlertVisible] = useState(false)
   const [isGameOver, setIsGameOver] = useState(false)
   const [gameState, setGameState] = useState(null)
+  const [winStreak, setWinStreak] = useState(0)
 
   const { width, height } = useWindowSize()
   
@@ -66,10 +67,14 @@ export default function SimonSays() {
   
   useEffect(() => {
     if (sequence.length === playerSequence.length && isGameOver) {
-      if (JSON.stringify(sequence) === JSON.stringify(playerSequence)) 
+      if (JSON.stringify(sequence) === JSON.stringify(playerSequence)) {
         setGameState('win')
-       else 
-        setGameState('loss')
+        setWinStreak(prev => prev + 1)
+      }
+       else {
+         setGameState('loss')
+         setWinStreak(0)
+       }
     }
   }, [isGameOver])
 
@@ -98,7 +103,9 @@ export default function SimonSays() {
         </button>
       </div>
 
-
+      <div className='h-32'>
+          <div className='font-sans text-xl fond-semibold'>Winning streak: x{winStreak}</div>
+      </div>
 
 
       <div className='h-32'>
@@ -111,6 +118,8 @@ export default function SimonSays() {
           </div>
 
       </div>
+
+
 
 
       <div className='flex flex-col items-center'>
