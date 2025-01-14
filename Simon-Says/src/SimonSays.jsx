@@ -1,11 +1,16 @@
 
+import React from 'react'
 import { useState, useEffect } from 'react'
+import { useWindowSize } from 'react-use'
 import GeneratedSequence from './components/GeneratedSequence'
 import PlayerSequence from './components/PlayerSequence'
 import ColorPicker from './components/ColorPicker'
 import Alert from './components/Alert'
 import { generateRandomSequence } from './utils/randomSequence'
 import { handleColor } from './utils/handleColor'
+import Confetti from 'react-confetti'
+import WinAlert from './components/WinAlert'
+import LossAlert from './components/LossAlert'
 
 
 export default function SimonSays() {
@@ -19,6 +24,9 @@ export default function SimonSays() {
   const [curtainVisible, setCurtainVisible] = useState(false)
   const [isAlertVisible, setIsAlertVisible] = useState(false)
   const [isGameOver, setIsGameOver] = useState(false)
+  const [gameState, setGameState] = useState(null)
+
+  const { width, height } = useWindowSize()
   
 
   useEffect(() => {
@@ -57,9 +65,13 @@ export default function SimonSays() {
   }, [isPlaying, countdown])
   
   useEffect(() => {
-    if (JSON.stringify(sequence) === JSON.stringify(playerSequence))
-        setIsGameOver(true)
-  }, [curtainVisible])
+    if (sequence.length === playerSequence.length && isGameOver) {
+      if (JSON.stringify(sequence) === JSON.stringify(playerSequence)) 
+        setGameState('win')
+       else 
+        setGameState('loss')
+    }
+  }, [isGameOver])
 
   const startGame = () => {
     setSequence(generateRandomSequence())
@@ -69,6 +81,7 @@ export default function SimonSays() {
     setIsVisible(false)
     setCurtainVisible(false)
     setIsGameOver(false)
+    setGameState(null)
   }
 
 
@@ -102,11 +115,21 @@ export default function SimonSays() {
 
       <div className='flex flex-col items-center'>
 
-          <div className='h-32'>
+          <div className='h-32 mb-12'>
             <div className={`transition-opacity duration-500 ease-in-out  ${isAlertVisible ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
               <Alert />
             </div>
+
+            { gameState === 'win' && <div>
+              <WinAlert />
+            </div>}
+
+            { gameState === 'loss' && <div>
+              <LossAlert />
+            </div>}
+
           </div>
+
 
           <GeneratedSequence 
             sequence={sequence} 
@@ -132,6 +155,12 @@ export default function SimonSays() {
         
       </div>
 
+      { gameState === 'win' && 
+        <Confetti
+            width={width}
+            height={height}
+        />
+      }
     </main>
   )
 }
