@@ -12,6 +12,11 @@ const colors = [
 
 export default function ColorPicker({ handleColor }) {
     console.log('pick')
+
+    const handleDragStart = (e, color) => {
+        e.dataTransfer.setData('color', color)
+    }
+
     return (
         <div className='flex flex-wrap justify-center gap-20 mt-[100px]'>
             {
@@ -24,6 +29,7 @@ export default function ColorPicker({ handleColor }) {
                         style={{backgroundColor: `${color}`}}
                         onClick={handleColor}
                         draggable
+                        onDragStart={(e) => handleDragStart(e, color)}
                         aria-label={`Selected color: ${color}`}
                     ></button>
                 
