@@ -1,11 +1,11 @@
 const colors = [
-  '#FF5733', // Red
-  '#33FF57', // Green
-  '#3357FF', // Blue
-  '#F1C40F', // Yellow
+  '#d00000', // Red
+  '#00b4d8',
+  '#0077b6', // Blue
+  '#ffb703', // Yellow
   '#9B59B6', // Purple
   '#E67E22', // Orange
-  '#1ABC9C', // Teal
+  '#99582a', // Teal
   '#34495E', // Dark Blue
 ]
 

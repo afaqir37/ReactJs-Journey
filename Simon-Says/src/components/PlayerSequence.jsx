@@ -1,13 +1,13 @@
 import { useState } from 'react'
 
-export default function PlayerSequence({ playerSequence, setPlayerSequence, isVisible }) {
+export default function PlayerSequence({ playerSequence, setPlayerSequence, isVisible, isGameOver }) {
 
     
 
     const handleDrop = (e, index) => {
       e.preventDefault()
 
-      if (isVisible)
+      if (isVisible || isGameOver)
         return 
       const color = e.dataTransfer.getData('color')
       const newPlayerSequence = [...playerSequence]

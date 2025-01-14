@@ -1,16 +1,16 @@
 
 const colors = [
-    '#FF5733', // Red
-    '#33FF57', // Green
-    '#3357FF', // Blue
-    '#F1C40F', // Yellow
+    '#d00000', // Red
+    '#00b4d8',
+    '#0077b6', // Blue
+    '#ffb703', // Yellow
     '#9B59B6', // Purple
     '#E67E22', // Orange
-    '#1ABC9C', // Teal
+    '#99582a', // Teal
     '#34495E', // Dark Blue
 ]
 
-export default function ColorPicker({ handleColor, isVisible}) {
+export default function ColorPicker({ handleColor, isVisible, isGameOver}) {
 
     const handleDragStart = (e, color) => {
         
@@ -25,7 +25,7 @@ export default function ColorPicker({ handleColor, isVisible}) {
                         key={color}
                         className={`w-16 h-16 border-2 border-black rounded-full 
                                     shadow-lg transition-transform duration-200 
-                                    ease-in-out  transform hover:scale-110 hover:shadow-xl ${isVisible ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                    ease-in-out  transform hover:scale-110 hover:shadow-xl ${isVisible || isGameOver ? 'opacity-50 cursor-not-allowed' : ''}`}
                         style={{backgroundColor: `${color}`}}
                         onClick={handleColor}
                         draggable

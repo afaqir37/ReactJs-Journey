@@ -18,6 +18,7 @@ export default function SimonSays() {
   const [isVisible, setIsVisible] = useState(false)
   const [curtainVisible, setCurtainVisible] = useState(false)
   const [isAlertVisible, setIsAlertVisible] = useState(false)
+  const [isGameOver, setIsGameOver] = useState(false)
   
 
   useEffect(() => {
@@ -55,7 +56,10 @@ export default function SimonSays() {
       }
   }, [isPlaying, countdown])
   
-
+  useEffect(() => {
+    if (JSON.stringify(sequence) === JSON.stringify(playerSequence))
+        setIsGameOver(true)
+  }, [curtainVisible])
 
   const startGame = () => {
     setSequence(generateRandomSequence())
@@ -64,6 +68,7 @@ export default function SimonSays() {
     setCountdown(4)
     setIsVisible(false)
     setCurtainVisible(false)
+    setIsGameOver(false)
   }
 
 
@@ -109,17 +114,19 @@ export default function SimonSays() {
             curtainVisible={curtainVisible}
             setCurtainVisible={setCurtainVisible}
             setIsAlertVisible={setIsAlertVisible}
-            
+            setIsGameOver={setIsGameOver}
           />
           
           <PlayerSequence 
             playerSequence={playerSequence}
             setPlayerSequence={setPlayerSequence}
             isVisible={isVisible}
+            isGameOver={isGameOver}
           />
           <ColorPicker
             handleColor={handleColor} 
             isVisible={isVisible}
+            isGameOver={isGameOver}
           />
 
         
